@@ -4,6 +4,7 @@ import Service from "../components/home/Service"
 import Number from "../components/home/Number"
 import Testimonial from "../components/home/Testimonial"
 import NewsLetter from "../components/home/NewsLetter"
+import TotalService from "../components/services/TotalService"
 
 function page() {
   return (
@@ -14,6 +15,7 @@ function page() {
         <Number />
       </div>
     <Testimonial />
+    <TotalService />
     <NewsLetter />
     </div>
   )

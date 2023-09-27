@@ -111,3 +111,39 @@ export const blogImg = [
         img : image13,
     },
 ]
+
+
+export const navLink = [
+    {
+        path : "/",
+        name : "Home"
+    },
+    {
+        path : "/services",
+        name : "Services"
+    },
+    {
+        path : "",
+        name : "Blog / Quotes"
+    },
+    {
+        path : "",
+        name : "Clientele"
+    },
+    {
+        path : "",
+        name : "Testimonials"
+    },
+    {
+        path : "",
+        name : "Payment"
+    },
+    {
+        path : "",
+        name : "About"
+    },
+    {
+        path : "/contact",
+        name : "Contact"
+    },
+]

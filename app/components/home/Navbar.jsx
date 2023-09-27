@@ -5,18 +5,21 @@ import {AiOutlineArrowUp} from 'react-icons/ai'
 import Link from "next/link"
 import Image from "next/image"
 import { useState, useEffect } from "react"
+import { usePathname } from 'next/navigation'
 
 import MobileMenu from '../MobileMenu'
+import { navLink } from '@/public/data'
 import logo from '@/public/images/logo.png'
 
 function Navbar() {
 
+    const router = usePathname();
     const [navbar, setNavbar] = useState(false)
     const [mobileMenu, setMobileMenu] = useState(false)
 
     useEffect(()=>{      
         window.addEventListener('scroll', ()=>{
-            if(window.scrollY > 100){
+            if(window.scrollY > 80){
                 setNavbar(true)
             }else{
                 setNavbar(false)
@@ -35,6 +38,7 @@ function Navbar() {
         setMobileMenu(true)
     }
 
+
     return (
         <div className={`${ navbar ? "bg-[#e0f2fe] " : '' } fixed z-50 w-full duration-300`}>
             <div className='fixed right-5 bottom-5 md:right-10 md:bottom-10'>
@@ -50,14 +54,11 @@ function Navbar() {
                     </div>
                     {mobileMenu && <MobileMenu setMobileMenu={setMobileMenu} />}
                     <div className="hidden md:flex gap-5 list-none text-lg font-medium">
-                        <li className="text-gray-600 hover:text-blue-500 duration-200"><Link href="/">Home</Link></li>
-                        <li className="text-gray-600 hover:text-blue-500 duration-200"><Link href="/services">Services</Link></li>
-                        {/* <li className="text-gray-600 hover:text-blue-500 duration-200"><Link href="">Blog / Quotes</Link></li>
-                        <li className="text-gray-600 hover:text-blue-500 duration-200"><Link href="">Clientele</Link></li>
-                        <li className="text-gray-600 hover:text-blue-500 duration-200"><Link href="">Testimonials</Link></li>
-                        <li className="text-gray-600 hover:text-blue-500 duration-200"><Link href="">Payment</Link></li>
-                        <li className="text-gray-600 hover:text-blue-500 duration-200"><Link href="">About</Link></li> */}
-                        <li className="text-gray-600 hover:text-blue-500 duration-200"><Link href="/contact">Contact</Link></li>
+                        {
+                            navLink?.map((link, val)=>(
+                                <li key={val}  className={`${ router == link.path ? 'text-blue-600 border-2 border-b-blue-600 border-x-0 border-t-0' : '' } text-gray-600 hover:text-blue-500 duration-200`}><Link href={link.path} >{link.name}</Link></li>
+                            ))
+                        }
                     </div>
                 </nav>
             </div>
